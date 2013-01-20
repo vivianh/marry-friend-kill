@@ -177,7 +177,7 @@
           if (!names) {
             debugger;
           }
-          names.push(data[findex].id);
+          names.push(data[findex].name);
           console.log(names[findex]);
           /*console.log(names[findex].name);*/
 
@@ -267,10 +267,15 @@
           }
         }
 
+
+
         function postToFB() {
-          FB.api('/me/marry_friend_kill:play', 'post', {
-            message: "I just played Marry Friend Kill with @["+names[0]+"], @["+names[1]+"], and @["+names[2]+"].", 
-            game: "http://samples.ogp.me/472565366131991" 
+
+          /*FB.api('/me/marry_friend_kill:play', 'post', {*/
+          FB.api('/me/feed', 'post', {
+            message: "I just played Marry Friend Kill with "+names[0]+", "+names[1]+", and "+names[2]+". Play the game at http://git.to/marryfriendk",
+            /*message: "I just played Marry Friend Kill with @["+names[0]+"] @["+names[1]+"] and @["+names[2]+"].",*/
+            /*game: "http://samples.ogp.me/472565366131991"*/
           /*game: "http://mfkapp.herokuapp.com" */ 
           }, function(response) {
             log(response);      
@@ -304,4 +309,8 @@
       </div>
     </div>
   </body>
+  <footer>
+    Built at PennApps Hackathon, Spring 2013, by <a href="mailto:vivianhhuang@gmail.com">Vivian Huang</a>, <a href="theodorapaja@gmail.com">Theodora Pajaczkowska</a>, <a href="mailto:tanirganemre@gmail.com">Emre Tanirgan</a>.
+  </footer>
+
 </html>

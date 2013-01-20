@@ -25,13 +25,26 @@
 	margin: 0px auto;
 	*/
 
-	height: 800px;
-	margin-left: 34%;
+	height: 700px;
+	margin-left: 35%;
 
 }
 
+a {
+	text-decoration: none;
+	color: black;
+} a:hover {
+	color: #6495ED;
+} 
+
 .loggedOut {
 	margin: 20px;
+}
+
+footer {
+	font-family: 'Arvo';
+	font-size: 14px;
+	text-align: center;
 }
 
 img {
