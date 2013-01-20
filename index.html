@@ -176,17 +176,17 @@
 
           var divContainer = document.createElement("div");
           divContainer.innerHTML=
-          "<img src='http://graph.facebook.com/"
+          "<img class='friendProfilePic' src='http://graph.facebook.com/"
           +data[findex].id
           +"/picture?width=150&height=150'></img>"
           +"<br>"
           +data[findex].name
           +"<br>"
-          +"<button id='marry"+findex+"' onclick='marry("+findex+")'>Marry</button>"
+          +"<img src='rings2525.png'></img><button id='marry"+findex+"' onclick='marry("+findex+")'>Marry</button>"
           +"<br>"
-          +"<button id='friend"+findex+"' onclick='friend("+findex+")'>Friend</button>"
+          +"<img src='friend.png'></img><button id='friend"+findex+"' onclick='friend("+findex+")'>Friend</button>"
           +"<br>"
-          +"<button id='kill"+findex+"' onclick='kill("+findex+")'>Kill</button> <br />";
+          +"<img src='skull.png'></img><button id='kill"+findex+"' onclick='kill("+findex+")'>Kill</button> <br />";
           divTarget.appendChild(divContainer);
           divContainer.className = "friend";
         }  

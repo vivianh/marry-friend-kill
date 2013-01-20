@@ -6,7 +6,11 @@
 	font-family: 'Arvo';
 	font-size: 60px;
 	text-align: center;
-	/*color: white;*/
+	color: white;
+	border-style: solid;
+	border-width: 5px;
+	border-color: azure;
+	background-color: #8794C6;
 }
 
 .head-container {
@@ -17,6 +21,17 @@
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	border-style: solid;
+	border-width: 5px;
+	border-color: azure;
+	background-color: #8794C6;
+}
+
+.friendProfilePic {
+	border-style: solid;
+	border-width: 5px;
+	border-color: azure;
+	background-color: #8794C6;
 }
 
 button {
@@ -24,16 +39,21 @@ button {
 }
 
 #friends-container {
-	display: inline;
+	/*display: inline;*/
 	text-align: center;
-	width: 1000px;
+	/*width: 1000px;*/
+	width: 45%;
 	height: 600px;
+	margin: 0px auto;
 }
 
 .friend {
 	display: inline;
 	float: left;
 	padding: 10px;
+	color: white;
+	font-family: Arvo;
+	font-size: 18px;
 }
 
 button {
