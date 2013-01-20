@@ -28,6 +28,10 @@
 	height: 700px;
 	margin-left: 35%;
 
+	overflow: auto;
+	clear: both;
+	width: 540px;
+	margin: 0 auto;
 }
 
 a {
