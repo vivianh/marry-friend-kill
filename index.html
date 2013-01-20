@@ -1,159 +1,146 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <LINK href="index.css" rel="stylesheet" type="text/css">
-  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700,400italic|Arvo:400,700' rel='stylesheet'>
-  <!-- This quickstart page uses jQuery: http://api.jquery.com/ -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-</head>
-<body>
-  <div id="fb-root"></div>
-  <script>
+  <head>
+    <meta property="og:title" content="Marry Friend Kill" />
+    <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" />
+    <meta property="fb:app_id" content="472490886139439" />
+    <meta property="og:url" content="http://samples.ogp.me/472565366131991" />
+    <meta property="og:type" content="marry_friend_kill:game" />
+    <title>"Marry Friend Kill"</title>
 
-    var marrySelect = false;
-    var friendSelect = false;
-    var killSelect = false;
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700,400italic|Arvo:400,700' rel='stylesheet'>
+    <!-- This quickstart page uses jQuery: http://api.jquery.com/ -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script>
+      /*
+        var marrySelect = false;
+        var friendSelect = false;
+        var killSelect = false;
+      */
 
-    var setProfilePic = function(imgElem, userId) {
-      var profilePicSrc = 'http://graph.facebook.com/' + userId + '/picture?width=150&height=150';
-      imgElem.attr('src', profilePicSrc);
-      return imgElem;
-    };
+      var setProfilePic = function(imgElem, userId) {
+        var profilePicSrc = 'http://graph.facebook.com/' + userId + '/picture?width=150&height=150';
+        imgElem.attr('src', profilePicSrc);
+        return imgElem;
+      };
 
-    var getLoggedInUserId = function() {
-      var authResponse = FB.getAuthResponse();
-      if (!authResponse)
-        throw "Oops, no auth response. Are you sure you're calling this code within a .loggedIn element?"
-          + "\n It's also possible that the user logged out in another tab.";
-      return authResponse.userID;
-    };
+      var getLoggedInUserId = function() {
+        var authResponse = FB.getAuthResponse();
+        if (!authResponse)
+          throw "Oops, no auth response. Are you sure you're calling this code within a .loggedIn element?"
+        + "\n It's also possible that the user logged out in another tab.";
+        return authResponse.userID;
+      };
 
-    /* That's all you need to know to get started! You can now edit the
-     * following variables and skip straight to building your app's logic.
-     *
-     * APP SETUP
-     * 1) go to http://developers.facebook.com/apps ; log in and sign up as needed
-     * 2) click "create new app," give it a name and click continue
-     *    ...once the app is created, you'll be redirected to its settings page
-     * 3) check "Website with Facebook Login" and enter "http://localhost:5000" as the Site URL
-     * 4) click "save changes"
-     * 5) copy the App ID from the settings page and paste it below
-     * 6) serve this file on http://localhost:5000
-     *    one way to do this is by running the following command from this directory:
-     *    IF YOU HAVE PYTHON 2.X: python -m SimpleHTTPServer 5000
-     *    IF YOU HAVE PYTHON 3.X: python -m http.server 5000
-     * 7) consider reading HOW TO RUN A NODE SERVER and HOW TO DEPLOY TO HEROKU below
-     */
-    var facebookAppID = "472490886139439";
-    if (facebookAppID == "YOUR_APP_ID")
-      alert("You need to set facebookAppID!"
+      /* That's all you need to know to get started! You can now edit the
+       * following variables and skip straight to building your app's logic.
+       *
+       * APP SETUP
+       * 1) go to http://developers.facebook.com/apps ; log in and sign up as needed
+       * 2) click "create new app," give it a name and click continue
+       *    ...once the app is created, you'll be redirected to its settings page
+       * 3) check "Website with Facebook Login" and enter "http://localhost:5000" as the Site URL
+       * 4) click "save changes"
+       * 5) copy the App ID from the settings page and paste it below
+       * 6) serve this file on http://localhost:5000
+       *    one way to do this is by running the following command from this directory:
+       *    IF YOU HAVE PYTHON 2.X: python -m SimpleHTTPServer 5000
+       *    IF YOU HAVE PYTHON 3.X: python -m http.server 5000
+       * 7) consider reading HOW TO RUN A NODE SERVER and HOW TO DEPLOY TO HEROKU below
+       */
+      var facebookAppID = "472490886139439";
+      if (facebookAppID == "YOUR_APP_ID")
+        alert("You need to set facebookAppID!"
         + "\nSearch for 'APP SETUP' in the html file.");
 
-    /* HOW TO RUN A NODE SERVER
-     * 1) download and install node: http://nodejs.org/download/
-     * 2) run `npm install` in this git repository's root directory (which contains package.json)
-     *    ...this installs all the dependencies needed by the server
-     * 3) run `node web.js` from the root directory
-     *    ...this runs a skeletal server that simply serves files from the static directory
-     *       (for example, static/index.template.html is available at http://localhost:5000/index.template.html)
-     *    ...you can change the port by running `PORT=8888 node web.js` or similar
-     * 4) You can modify web.js to add more complicated logic to the server
-     *    - http://nodejs.org/api/
-     *    - http://expressjs.com/guide.html
-     *    - https://devcenter.heroku.com/articles/nodejs
-     *
-     * HOW TO DEPLOY TO HEROKU
-     * 1) these instructions assume you want to deploy a node server
-     *    search https://devcenter.heroku.com/ for instructions if not
-     * 2) create an account (http://www.heroku.com/) and install the command line client (https://github.com/heroku/heroku#readme)
-     * 3) run `heroku apps:create` at this git repository's root
-     *    ...you should see output like this
-     *      Creating peaceful-harbor-6881... done, stack is cedar
-     *      http://peaceful-harbor-6881.herokuapp.com/ | git@heroku.com:peaceful-harbor-6881.git
-     *      Git remote heroku added
-     *    ...the "Git remote heroku added" line is important! If you don't see it,
-     *       double check that you ran the command at the repository root
-     * 4) run `git push heroku +HEAD:master` to deploy the current git HEAD to heroku
-     *    ...you can visit your app at the link printed when you ran `heroku apps:create`
-     *    ...IMPORTANT! Be sure you run `git status` and know what's in your git HEAD!
-     *       If you just blindly run the deployment command you might miss changes for
-     *       which you haven't yet run `git commit`.
-     * 5) add the deployment url to your app so facebook knows it's ok to let that domain
-     *    use your app id. If you want to do this without replacing the http://localhost:5000
-     *    setting, one hack is to enter the deployment url under the "Mobile Web" setting.
-     */
+      /* HOW TO RUN A NODE SERVER
+       * 1) download and install node: http://nodejs.org/download/
+       * 2) run `npm install` in this git repository's root directory (which contains package.json)
+       *    ...this installs all the dependencies needed by the server
+       * 3) run `node web.js` from the root directory
+       *    ...this runs a skeletal server that simply serves files from the static directory
+       *       (for example, static/index.template.html is available at http://localhost:5000/index.template.html)
+       *    ...you can change the port by running `PORT=8888 node web.js` or similar
+       * 4) You can modify web.js to add more complicated logic to the server
+       *    - http://nodejs.org/api/
+       *    - http://expressjs.com/guide.html
+       *    - https://devcenter.heroku.com/articles/nodejs
+       *
+       * HOW TO DEPLOY TO HEROKU
+       * 1) these instructions assume you want to deploy a node server
+       *    search https://devcenter.heroku.com/ for instructions if not
+       * 2) create an account (http://www.heroku.com/) and install the command line client (https://github.com/heroku/heroku#readme)
+       * 3) run `heroku apps:create` at this git repository's root
+       *    ...you should see output like this
+       *      Creating peaceful-harbor-6881... done, stack is cedar
+       *      http://peaceful-harbor-6881.herokuapp.com/ | git@heroku.com:peaceful-harbor-6881.git
+       *      Git remote heroku added
+       *    ...the "Git remote heroku added" line is important! If you don't see it,
+       *       double check that you ran the command at the repository root
+       * 4) run `git push heroku +HEAD:master` to deploy the current git HEAD to heroku
+       *    ...you can visit your app at the link printed when you ran `heroku apps:create`
+       *    ...IMPORTANT! Be sure you run `git status` and know what's in your git HEAD!
+       *       If you just blindly run the deployment command you might miss changes for
+       *       which you haven't yet run `git commit`.
+       * 5) add the deployment url to your app so facebook knows it's ok to let that domain
+       *    use your app id. If you want to do this without replacing the http://localhost:5000
+       *    setting, one hack is to enter the deployment url under the "Mobile Web" setting.
+       */
 
-    var log = function(msg) {
-      if (console && console.log)
-        console.log(msg);
-    };
-    var loggedOutUserId = 1; // a hack
-    var onStatusChange = function(response) {
-      var loggedIn = response.status == 'connected';
-      if (loggedIn) {
-        log("the user is logged in and has authenticated your"
-          + " app, and response.authResponse supplies"
-          + " the user's ID, a valid access token, a signed"
-          + " request, and the time the access token"
-          + " and signed request each expire");
-      } else if (response.status === 'not_authorized') {
-        log("the user is logged in to Facebook,"
-          + " but has not authenticated your app");
-      } else {
-        log("the user isn't logged in to Facebook.");
+      var log = function(msg) {
+        if (console && console.log)
+          console.log(msg);
+      };
+      var loggedOutUserId = 1; // a hack
+      var onStatusChange = function(response) {
+        var loggedIn = response.status == 'connected';
+        if (loggedIn) {
+          log("the user is logged in and has authenticated your"
+            + " app, and response.authResponse supplies"
+            + " the user's ID, a valid access token, a signed"
+            + " request, and the time the access token"
+            + " and signed request each expire");
+        } else if (response.status === 'not_authorized') {
+          log("the user is logged in to Facebook,"
+            + " but has not authenticated your app");
+        } else {
+          log("the user isn't logged in to Facebook.");
+        }
+        updateLoggedInHtml(loggedIn, loggedIn ? response.authResponse.userID : loggedOutUserId);
       }
-      updateLoggedInHtml(loggedIn, loggedIn ? response.authResponse.userID : loggedOutUserId);
-    }
-    var updateLoggedInHtml = function(isLoggedIn, userId) {
-      $('.loggedIn').toggle(isLoggedIn);
-      $('.loggedOut').toggle(!isLoggedIn);
-      setProfilePic($('img.profilePic'), userId);
-    };
-    $(function() { updateLoggedInHtml(false, loggedOutUserId); });
-    // Load the sdk asynchronously after setting the callback function.
-    // The docs say that this <script> should be placed just after <body>.
-    window.fbAsyncInit = function() {
-      FB.Event.subscribe('auth.statusChange', onStatusChange);
-      FB.init({
-        appId      : facebookAppID, // App ID
-        status     : true, // check login status
-        cookie     : true, // enable cookies to allow the server to access the session
-        xfbml      : true  // parse XFBML
-      });
-    };
-    (function(d){
-       var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement('script'); js.id = id; js.async = true;
-       js.src = "http://connect.facebook.net/en_US/all.js";
-       ref.parentNode.insertBefore(js, ref);
-     }(document));
-  </script>
-
-  <!-- YOUR_APP_LOGIC -->
-  <div class="everything">
-    <div class="head-container">
-      <div id="header">Marry Friend Kill</div>
-      <br />
-      <img class="profilePic" />
-
-      <div class="loggedOut">
-        <fb:login-button scope="publish_stream" />
-      </div>
-    </div>
-      <div class="loggedIn">
-
-      <div id="buttons">
-        <button onclick="showFriendsList()">Play!</button>
-        <button onclick="postToFB()">Share</button>
-        <button onclick="logout()">Log Out</button>
-      </div>
-
-      <div id = "friends-container">
-      </div>
-
-      <script>
+      var updateLoggedInHtml = function(isLoggedIn, userId) {
+        $('.loggedIn').toggle(isLoggedIn);
+        $('.loggedOut').toggle(!isLoggedIn);
+        setProfilePic($('img.profilePic'), userId);
+      };
+      $(function() { updateLoggedInHtml(false, loggedOutUserId); });
       
+      // Load the sdk asynchronously after setting the callback function.
+      // The docs say that this <script> should be placed just after <body>.
+      window.fbAsyncInit = function() {
+        FB.Event.subscribe('auth.statusChange', onStatusChange);
+        FB.init({
+          appId      : facebookAppID, // App ID
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
+      };
+      (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "http://connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+      }(document));
+    </script>
+
+    <script>
+
       function logout() {
         FB.logout(function(response){
 
@@ -171,12 +158,11 @@
 
       var names = [];
       function onFriendsListLoaded(response) {
-
         var divTarget = document.getElementById("friends-container");
         var data = response.data;
 
         for (var findex = 0; findex < 3; findex++) {
-          
+
           var swap = Math.floor(Math.random() * data.length);
           var temp = data[findex];
           data[findex] = data[swap];
@@ -246,48 +232,62 @@
           } else {
             state = false;
           }
-*/
+          */
           for (var i=0; i < 3; i++) {
             if (i != index) {
               document.getElementById("marry"+i).disabled = 'disabled';
             }
           }
-        
-      }
 
-      function friend(index) {
-        document.getElementById("marry"+index).disabled = 'disabled';
-        document.getElementById("kill"+index).disabled = 'disabled';
-        for (var i=0; i < 3; i++) {
-          if (i != index) {
-            document.getElementById("friend"+i).disabled = 'disabled';
+        }
+
+        function friend(index) {
+          document.getElementById("marry"+index).disabled = 'disabled';
+          document.getElementById("kill"+index).disabled = 'disabled';
+          for (var i=0; i < 3; i++) {
+            if (i != index) {
+              document.getElementById("friend"+i).disabled = 'disabled';
+            }
           }
         }
-      }
-      function kill(index) {
-        document.getElementById("marry"+index).disabled = 'disabled';
-        document.getElementById("friend"+index).disabled = 'disabled';
-        for (var i=0; i < 3; i++) {
-          if (i != index) {
-            document.getElementById("kill"+i).disabled = 'disabled';
+        function kill(index) {
+          document.getElementById("marry"+index).disabled = 'disabled';
+          document.getElementById("friend"+index).disabled = 'disabled';
+          for (var i=0; i < 3; i++) {
+            if (i != index) {
+              document.getElementById("kill"+i).disabled = 'disabled';
+            }
           }
         }
-      }
 
-      function postToFB() {
-        FB.api('/me/marry_friend_kill:play', 'post', {
+        function postToFB() {
+          FB.api('/me/marry_friend_kill:play', 'post', {
             message: "I just played Marry Friend Kill with @[785004072]",
             game: "http://samples.ogp.me/472565366131991"   
           }, function(response) {
-          log(response);      
-          location.reload();   
-        });
-      }
+            log(response);      
+            location.reload();   
+          });
+        }
 
       </script>
 
+    <!-- YOUR_APP_LOGIC -->
+    <div id="header">Marry Friend Kill</div>
+    <br />
+    <!--img class="profilePic" /-->
+    <div class="loggedOut">
+      <fb:login-button scope="publish_stream" />
+    </div>    
 
+    <div class="loggedIn">
+      <div id="buttons">
+        <button onclick="showFriendsList()">Play!</button>
+        <button onclick="postToFB()">Share</button>
+        <button onclick="logout()">Log Out</button>
+      </div>
+      <div id = "friends-container">
+      </div>
     </div>
-  </everything>
-</body>
+  </body>
 </html>
