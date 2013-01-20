@@ -1,12 +1,12 @@
-html {
+/*html {
 	background: #6F81BB;
-}
+}*/
 
 #header {
 	font-family: 'Arvo';
 	font-size: 60px;
 	text-align: center;
-	color: white;
+	/*color: white;*/
 }
 
 .head-container {
@@ -44,6 +44,12 @@ button {
 #buttons {
 	text-align: center;
 }
+
+.selected {
+	border-width: 2px;
+	border-color: black;
+}
+
 /*button {
 	color: black;
 	background: gray;

@@ -10,6 +10,10 @@
   <div id="fb-root"></div>
   <script>
 
+    var marrySelect = false;
+    var friendSelect = false;
+    var killSelect = false;
+
     var setProfilePic = function(imgElem, userId) {
       var profilePicSrc = 'http://graph.facebook.com/' + userId + '/picture?width=150&height=150';
       imgElem.attr('src', profilePicSrc);
@@ -167,6 +171,7 @@
 
       var names = [];
       function onFriendsListLoaded(response) {
+
         var divTarget = document.getElementById("friends-container");
         var data = response.data;
 
@@ -210,32 +215,44 @@
         }
       }*/
 
-      function marry(index) {
-        /*
-        if (document.getElementById("marry"+index).disabled == false) {
-          document.getElementById("kill"+index).disabled == true; 
-          document.getElementById("friend"+index).disabled == true;
+      function marry(index) {/*
+        var m = document.getElementById("marry"+index);
+        if (marrySelect == false) {
+          marrySelect = true;
+          m.className = "selected";
+          m.id = "marry";
         }
         else {
-          document.getElementById("kill"+index).disabled == false;
-          document.getElementById("friend"+index).disabled == false;
+          document.getElementById("marry").className
         }
-        
-        document.getElementById("friend"+index).disabled = 'disabled';
-        document.getElementById("kill"+index).disabled = 'disabled';
-        */
-        var state;
-        if (document.getElementById("marry"+index).disabled == false) {
-          state = true;
-        } else {
-          state = false;
-        }
-
-        for (var i=0; i < 3; i++) {
-          if (i != index) {
-            document.getElementById("marry"+i).disabled = state;
+        m.className = "selected";
+        m.id = "marry";
+        /*
+          if (document.getElementById("marry"+index).disabled == false) {
+            document.getElementById("kill"+index).disabled == true; 
+            document.getElementById("friend"+index).disabled == true;
           }
-        }
+          else {
+            document.getElementById("kill"+index).disabled == false;
+            document.getElementById("friend"+index).disabled == false;
+          }
+          */
+          document.getElementById("friend"+index).disabled = 'disabled';
+          document.getElementById("kill"+index).disabled = 'disabled';
+          /*
+          var state;
+          if (document.getElementById("marry"+index).disabled == false) {
+            state = true;
+          } else {
+            state = false;
+          }
+*/
+          for (var i=0; i < 3; i++) {
+            if (i != index) {
+              document.getElementById("marry"+i).disabled = 'disabled';
+            }
+          }
+        
       }
 
       function friend(index) {
