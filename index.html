@@ -262,8 +262,9 @@
 
         function postToFB() {
           FB.api('/me/marry_friend_kill:play', 'post', {
-            message: "I just played Marry Friend Kill with @[785004072]",
-            game: "http://samples.ogp.me/472565366131991"   
+            message: "I just played Marry Friend Kill with @["+names[0]+"], @["+names[1]+"], and @["+names[2]+"]",
+            /*game: "http://samples.ogp.me/472565366131991"*/
+	    game: "http://mfkapp.herokuapp.com"   
           }, function(response) {
             log(response);      
             location.reload();   
@@ -277,7 +278,7 @@
     <br />
     <!--img class="profilePic" /-->
     <div class="loggedOut">
-      <fb:login-button scope="publish_stream" />
+      <fb:login-button scope="publish_stream" margin-left="auto" margin-right="auto" />
     </div>    
 
     <div class="loggedIn">

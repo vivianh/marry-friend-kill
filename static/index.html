@@ -147,6 +147,13 @@
         });
       }
 
+      function login() {
+        FB.login(function(response){
+          FB.api('/me', function(response) {
+          });
+        }, {scope: 'publish_stream'});
+      }
+
       function showFriendsList() {
         deleteCurrentGame();
         FB.api('/me/friends', onFriendsListLoaded);
@@ -262,8 +269,9 @@
 
         function postToFB() {
           FB.api('/me/marry_friend_kill:play', 'post', {
-            message: "I just played Marry Friend Kill with @[785004072]",
-            game: "http://samples.ogp.me/472565366131991"   
+            message: "I just played Marry Friend Kill with @["+names[0]+"], @["+names[1]+"], and @["+names[2]+"]",
+           /* game: "http://samples.ogp.me/472565366131991" */
+            game: "http://mfkapp.herokuapp.com"  
           }, function(response) {
             log(response);      
             location.reload();   
@@ -273,12 +281,18 @@
       </script>
 
     <!-- YOUR_APP_LOGIC -->
+    <br />
+    <br />
+    <br />
     <div id="header">Marry Friend Kill</div>
     <br />
     <!--img class="profilePic" /-->
-    <div class="loggedOut">
-      <fb:login-button scope="publish_stream" />
-    </div>    
+    <center>
+      <div class="loggedOut">
+        <fb:login-button scope="publish_stream" id="fblogin"></button>
+        <!--<button id="fblogin2" onclick="login()">Log In With Facebook</button>-->
+      </div>
+    </center>  
 
     <div class="loggedIn">
       <div id="buttons">

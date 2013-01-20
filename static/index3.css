@@ -2,35 +2,11 @@
 	background: #6F81BB;
 }*/
 
-#left {
-	background: #CCC;
-	float: left;
-	width: 200px;
-	height: auto;
-}
-
-#right {
-	background: #CCC;
-	float: right;
-	width: 200px;
-	height: auto;
-}
-
-#center {
-	margin-left: 200px;
-	margin-right: 200px;
-	background: white;
-}
-
 #header {
 	font-family: 'Arvo';
 	font-size: 80px;
 	text-align: center;
 	/*color: white;*/
-}
-
-.head-container {
-	text-align: center;
 }
 
 .profilePic {
@@ -39,26 +15,47 @@
 	text-align: center;
 }
 
-/*
 #friends-container {
-	display: inline;
+	/*display: inline;*/
+	/*width: 1000px;*/
+	/*
 	text-align: center;
-	width: 1000px;
+	width: 37%;
 	height: 600px;
+	margin: 0px auto;
+	*/
+
+	height: 800px;
+	margin-left: 33.5%;
+
 }
-*/
+
+.loggedOut {
+	margin: 20px;
+}
+
+img {
+	padding-right: 10px;
+}
+
+#fblogin {
+	text-align:center;
+	width:10%;
+	margin: 0px auto;
+}
 
 .friend {
 	display: inline;
 	float: left;
 	padding: 10px;
 	font-family: 'Arvo';
-	font-size: 20px;
+	font-size: 16px;
+	max-width: 160px;
 }
 
 button {
 	font-size: 18px;
-	width: 150px;
+	width: 120px;
 	/*background: #4682B4;*/
 	background: #6495ED;
 	color: white;
@@ -71,8 +68,12 @@ button {
 	padding-bottom: 4px;
 }
 	button:hover {
-		background: gray;
+		background: orange;
 	}
+
+button[disabled] {
+	background: gray;
+}
 
 #buttons {
 	text-align: center;
