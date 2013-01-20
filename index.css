@@ -25,10 +25,15 @@ button {
 
 #friends-container {
 	display: inline;
+	text-align: center;
+	width: 1000px;
+	height: 600px;
 }
 
 .friend {
 	display: inline;
+	float: left;
+	padding: 10px;
 }
 
 button {
