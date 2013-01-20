@@ -7,6 +7,10 @@ html {
 	font-size: 60px;
 	text-align: center;
 	color: white;
+	border-style: inset;
+	border-width: 5px;
+	border-color: azure;
+	background-color: #8794C6;
 }
 
 .head-container {
