@@ -51,6 +51,9 @@ button {
 	display: inline;
 	float: left;
 	padding: 10px;
+	color: white;
+	font-family: Arvo;
+	font-size: 18px;
 }
 
 button {
