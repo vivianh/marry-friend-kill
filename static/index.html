@@ -269,9 +269,9 @@
 
         function postToFB() {
           FB.api('/me/marry_friend_kill:play', 'post', {
-            message: "I just played Marry Friend Kill with @["+names[0]+"], @["+names[1]+"], and @["+names[2]+"]",
-           /* game: "http://samples.ogp.me/472565366131991" */
-            game: "http://mfkapp.herokuapp.com"  
+            message: "I just played Marry Friend Kill with @["+names[0]+"], @["+names[1]+"], and @["+names[2]+"].", 
+           game: "http://samples.ogp.me/472565366131991" 
+          /*game: "http://mfkapp.herokuapp.com" */ 
           }, function(response) {
             log(response);      
             location.reload();   
