@@ -2,15 +2,31 @@
 	background: #6F81BB;
 }*/
 
+#left {
+	background: #CCC;
+	float: left;
+	width: 200px;
+	height: auto;
+}
+
+#right {
+	background: #CCC;
+	float: right;
+	width: 200px;
+	height: auto;
+}
+
+#center {
+	margin-left: 200px;
+	margin-right: 200px;
+	background: white;
+}
+
 #header {
 	font-family: 'Arvo';
-	font-size: 60px;
+	font-size: 80px;
 	text-align: center;
-	color: white;
-	border-style: solid;
-	border-width: 5px;
-	border-color: azure;
-	background-color: #8794C6;
+	/*color: white;*/
 }
 
 .head-container {
@@ -21,48 +37,46 @@
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	border-style: solid;
-	border-width: 5px;
-	border-color: azure;
-	background-color: #8794C6;
 }
 
-.friendProfilePic {
-	border-style: solid;
-	border-width: 5px;
-	border-color: azure;
-	background-color: #8794C6;
-}
-
-button {
-	display: inline;
-}
-
+/*
 #friends-container {
-	/*display: inline;*/
+	display: inline;
 	text-align: center;
-	/*width: 1000px;*/
-	width: 45%;
+	width: 1000px;
 	height: 600px;
-	margin: 0px auto;
 }
+*/
 
 .friend {
 	display: inline;
 	float: left;
 	padding: 10px;
-	color: white;
-	font-family: Arvo;
-	font-size: 18px;
+	font-family: 'Arvo';
+	font-size: 20px;
 }
 
 button {
 	font-size: 18px;
-	width: 140px;
+	width: 150px;
+	/*background: #4682B4;*/
+	background: #6495ED;
+	color: white;
+	
+	border: 0;
+	border-radius: 2px;
+	font-family: 'Arvo';
+
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
+	button:hover {
+		background: gray;
+	}
 
 #buttons {
 	text-align: center;
+	margin-bottom: 50px;
 }
 
 .selected {
