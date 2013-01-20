@@ -39,10 +39,12 @@ button {
 }
 
 #friends-container {
-	display: inline;
+	/*display: inline;*/
 	text-align: center;
-	width: 1000px;
+	/*width: 1000px;*/
+	width: 45%;
 	height: 600px;
+	margin: 0px auto;
 }
 
 .friend {
