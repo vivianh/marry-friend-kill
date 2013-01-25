@@ -23,11 +23,11 @@
 	width: 37%;
 	height: 600px;
 	margin: 0px auto;
-	
+	*/
 
 	height: 700px;
 	margin-left: 35%;
-	*/
+
 	overflow: auto;
 	clear: both;
 	width: 540px;

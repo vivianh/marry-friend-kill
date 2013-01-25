@@ -16,11 +16,6 @@
   <body>
     <div id="fb-root"></div>
     <script>
-      /*
-        var marrySelect = false;
-        var friendSelect = false;
-        var killSelect = false;
-      */
 
       var setProfilePic = function(imgElem, userId) {
         var profilePicSrc = 'http://graph.facebook.com/' + userId + '/picture?width=150&height=150';
@@ -36,60 +31,10 @@
         return authResponse.userID;
       };
 
-      /* That's all you need to know to get started! You can now edit the
-       * following variables and skip straight to building your app's logic.
-       *
-       * APP SETUP
-       * 1) go to http://developers.facebook.com/apps ; log in and sign up as needed
-       * 2) click "create new app," give it a name and click continue
-       *    ...once the app is created, you'll be redirected to its settings page
-       * 3) check "Website with Facebook Login" and enter "http://localhost:5000" as the Site URL
-       * 4) click "save changes"
-       * 5) copy the App ID from the settings page and paste it below
-       * 6) serve this file on http://localhost:5000
-       *    one way to do this is by running the following command from this directory:
-       *    IF YOU HAVE PYTHON 2.X: python -m SimpleHTTPServer 5000
-       *    IF YOU HAVE PYTHON 3.X: python -m http.server 5000
-       * 7) consider reading HOW TO RUN A NODE SERVER and HOW TO DEPLOY TO HEROKU below
-       */
       var facebookAppID = "472490886139439";
       if (facebookAppID == "YOUR_APP_ID")
         alert("You need to set facebookAppID!"
         + "\nSearch for 'APP SETUP' in the html file.");
-
-      /* HOW TO RUN A NODE SERVER
-       * 1) download and install node: http://nodejs.org/download/
-       * 2) run `npm install` in this git repository's root directory (which contains package.json)
-       *    ...this installs all the dependencies needed by the server
-       * 3) run `node web.js` from the root directory
-       *    ...this runs a skeletal server that simply serves files from the static directory
-       *       (for example, static/index.template.html is available at http://localhost:5000/index.template.html)
-       *    ...you can change the port by running `PORT=8888 node web.js` or similar
-       * 4) You can modify web.js to add more complicated logic to the server
-       *    - http://nodejs.org/api/
-       *    - http://expressjs.com/guide.html
-       *    - https://devcenter.heroku.com/articles/nodejs
-       *
-       * HOW TO DEPLOY TO HEROKU
-       * 1) these instructions assume you want to deploy a node server
-       *    search https://devcenter.heroku.com/ for instructions if not
-       * 2) create an account (http://www.heroku.com/) and install the command line client (https://github.com/heroku/heroku#readme)
-       * 3) run `heroku apps:create` at this git repository's root
-       *    ...you should see output like this
-       *      Creating peaceful-harbor-6881... done, stack is cedar
-       *      http://peaceful-harbor-6881.herokuapp.com/ | git@heroku.com:peaceful-harbor-6881.git
-       *      Git remote heroku added
-       *    ...the "Git remote heroku added" line is important! If you don't see it,
-       *       double check that you ran the command at the repository root
-       * 4) run `git push heroku +HEAD:master` to deploy the current git HEAD to heroku
-       *    ...you can visit your app at the link printed when you ran `heroku apps:create`
-       *    ...IMPORTANT! Be sure you run `git status` and know what's in your git HEAD!
-       *       If you just blindly run the deployment command you might miss changes for
-       *       which you haven't yet run `git commit`.
-       * 5) add the deployment url to your app so facebook knows it's ok to let that domain
-       *    use your app id. If you want to do this without replacing the http://localhost:5000
-       *    setting, one hack is to enter the deployment url under the "Mobile Web" setting.
-       */
 
       var log = function(msg) {
         if (console && console.log)
@@ -198,94 +143,47 @@
           divContainer.className = "friend";
         }  
       }
-
-      /*
-      function select(id, index) {
-        if (document.getElementById(id).disabled == false) {
-          document.getElementById(id).disabled == true;
-        } else {
-          document.getElementById(id).disabled == false;
-        }
-      }*/
-
-      function marry(index) {/*
-        var m = document.getElementById("marry"+index);
-        if (marrySelect == false) {
-          marrySelect = true;
-          m.className = "selected";
-          m.id = "marry";
-        }
-        else {
-          document.getElementById("marry").className
-        }
-        m.className = "selected";
-        m.id = "marry";*/
-        /*
-          if (document.getElementById("marry"+index).disabled == false) {
-            document.getElementById("kill"+index).disabled == true; 
-            document.getElementById("friend"+index).disabled == true;
-          }
-          else {
-            document.getElementById("kill"+index).disabled == false;
-            document.getElementById("friend"+index).disabled == false;
-          }
-          */
-          document.getElementById("friend"+index).disabled = 'disabled';
-          document.getElementById("kill"+index).disabled = 'disabled';
-          /*
-          var state;
-          if (document.getElementById("marry"+index).disabled == false) {
-            state = true;
-          } else {
-            state = false;
-          }
-          */
-          for (var i=0; i < 3; i++) {
-            if (i != index) {
-              document.getElementById("marry"+i).disabled = 'disabled';
-            }
-          }
-
-        }
-
-        function friend(index) {
-          document.getElementById("marry"+index).disabled = 'disabled';
-          document.getElementById("kill"+index).disabled = 'disabled';
-          for (var i=0; i < 3; i++) {
-            if (i != index) {
-              document.getElementById("friend"+i).disabled = 'disabled';
-            }
-          }
-        }
-        function kill(index) {
-          document.getElementById("marry"+index).disabled = 'disabled';
-          document.getElementById("friend"+index).disabled = 'disabled';
-          for (var i=0; i < 3; i++) {
-            if (i != index) {
-              document.getElementById("kill"+i).disabled = 'disabled';
-            }
+      
+      function marry(index) {
+        for (var i=0; i < 3; i++) {
+          if (i != index) {
+            document.getElementById("marry"+i).disabled = 'disabled';
           }
         }
 
+      }
 
-
-        function postToFB() {
-
-          /*FB.api('/me/marry_friend_kill:play', 'post', {*/
-          FB.api('/me/feed', 'post', {
-            message: "I just played Marry Friend Kill with "+names[0]+", "+names[1]+", and "+names[2]+". Play the game at http://git.to/marryfriendk",
-            /*message: "I just played Marry Friend Kill with @["+names[0]+"] @["+names[1]+"] and @["+names[2]+"].",*/
-            /*game: "http://samples.ogp.me/472565366131991"*/
-          /*game: "http://mfkapp.herokuapp.com" */ 
-          }, function(response) {
-            log(response);      
-            location.reload();   
-          });
+      function friend(index) {
+        document.getElementById("marry"+index).disabled = 'disabled';
+        document.getElementById("kill"+index).disabled = 'disabled';
+        for (var i=0; i < 3; i++) {
+          if (i != index) {
+            document.getElementById("friend"+i).disabled = 'disabled';
+          }
         }
+      }
+
+      function kill(index) {
+        document.getElementById("marry"+index).disabled = 'disabled';
+        document.getElementById("friend"+index).disabled = 'disabled';
+        for (var i=0; i < 3; i++) {
+          if (i != index) {
+            document.getElementById("kill"+i).disabled = 'disabled';
+          }
+        }
+      }
+
+      function postToFB() {
+        FB.api('/me/feed', 'post', {
+          message: "I just played Marry Friend Kill with "+names[0]+", "+names[1]+", and "+names[2]+". Play the game at http://git.to/marryfriendk",
+        }, function(response) {
+          log(response);      
+          location.reload();   
+        });
+      }
 
       </script>
 
-    <!-- YOUR_APP_LOGIC -->
     <br />
     <br />
     <br />
@@ -310,7 +208,7 @@
     </div>
   </body>
   <footer>
-    Built at PennApps Hackathon, Spring 2013, by <a href="mailto:vivianhhuang@gmail.com">Vivian Huang</a>, <a href="theodorapaja@gmail.com">Theodora Pajaczkowska</a>, <a href="mailto:tanirganemre@gmail.com">Emre Tanirgan</a>.
+    Built at PennApps Hackathon, Spring 2013, by <a href="mailto:vivianhhuang@gmail.com">Vivian Huang</a>, <a href="mailto:theodorapaja@gmail.com">Theodora Pajaczkowska</a>, <a href="mailto:tanirganemre@gmail.com">Emre Tanirgan</a>.
   </footer>
 
 </html>
